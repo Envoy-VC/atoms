@@ -1,11 +1,26 @@
 import React from 'react';
-import Link from 'next/link';
-import type { IconType } from 'react-icons';
-import { TbAtom2Filled, TbLayout } from 'react-icons/tb';
-import { RiNftLine } from 'react-icons/ri';
-import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+// Icons
+
+import {
+	TbBleachNoChlorine,
+	TbLayout,
+	TbChartPie,
+	TbActivityHeartbeat,
+	TbExchange,
+	TbSend,
+	TbSettings2,
+	TbDeviceWatch,
+	TbUserSquareRounded,
+} from 'react-icons/tb';
+import { RiNftLine } from 'react-icons/ri';
+
+// Types
+
+import type { IconType } from 'react-icons';
 interface SidebarItemProps extends React.ComponentProps<'div'> {
 	href: string;
 	Icon: IconType;
@@ -43,15 +58,16 @@ const SidebarItem = ({ href, Icon, label, ...props }: SidebarItemProps) => {
 const Sidebar = () => {
 	return (
 		<div className='item-center fixed flex h-full max-h-screen w-[76px] py-2'>
-			<div className='flex flex-col items-center justify-between rounded-[1.25rem] border-2 bg-[#0F162A] px-3 py-6'>
+			<div className='flex flex-col items-center justify-between rounded-[1.25rem] bg-[#0F162A] px-3 py-6'>
 				<div className='flex flex-col items-center gap-2'>
 					<Link href='/'>
-						<TbAtom2Filled size={32} className='mb-5 text-gray-50' />
+						<TbBleachNoChlorine size={32} className='mb-5 text-gray-50' />
 					</Link>
 					{SidebarItems.map((item, index) => (
 						<SidebarItem {...item} key={index} />
 					))}
 				</div>
+				<SidebarItem Icon={TbUserSquareRounded} href='/account' label='Account' />
 			</div>
 		</div>
 	);
@@ -64,9 +80,39 @@ const SidebarItems: SidebarItemProps[] = [
 		label: 'Dashboard',
 	},
 	{
+		href: '/portfolio',
+		Icon: TbChartPie,
+		label: 'Portfolio',
+	},
+	{
 		href: '/nfts',
 		Icon: RiNftLine,
 		label: 'NFTs',
+	},
+	{
+		href: '/market',
+		Icon: TbActivityHeartbeat,
+		label: 'Market',
+	},
+	{
+		href: '/swap',
+		Icon: TbExchange,
+		label: 'Swap',
+	},
+	{
+		href: '/send',
+		Icon: TbSend,
+		label: 'Send',
+	},
+	{
+		href: '/watchlist',
+		Icon: TbDeviceWatch,
+		label: 'Watchlist',
+	},
+	{
+		href: '/settings',
+		Icon: TbSettings2,
+		label: 'Settings',
 	},
 ];
 

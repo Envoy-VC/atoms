@@ -2,12 +2,12 @@ import type { ReactElement } from 'react';
 import { Layout } from '~/components';
 import type { NextPageWithLayout } from './_app';
 
-const Home: NextPageWithLayout = () => {
-	return <div className=''>hello world</div>;
+const NotFound: NextPageWithLayout = () => {
+	return <div>404</div>;
 };
 
-Home.getLayout = function getLayout(page: ReactElement) {
+NotFound.getLayout = function getLayout(page: ReactElement) {
 	return <Layout>{page}</Layout>;
 };
 
-export default Home;
+export default NotFound;
