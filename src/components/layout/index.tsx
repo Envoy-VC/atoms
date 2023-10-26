@@ -1,13 +1,9 @@
 import React from 'react';
-import {
-	Web3Provider,
-	AntDesignConfigProvider,
-	NotificationProvider,
-} from '~/providers';
+import { Web3Provider, AntDesignConfigProvider } from '~/providers';
 import { ThemeProvider } from 'next-themes';
 
 import clsx from 'clsx';
-import { Navbar, SEO } from '~/components/common';
+import { SEO, Sidebar } from '~/components/common';
 
 // Font
 import { Inter } from 'next/font/google';
@@ -20,17 +16,15 @@ interface Props {
 const Layout = ({ children }: Props) => {
 	return (
 		<ThemeProvider attribute='class' enableSystem={false}>
-			<AntDesignConfigProvider>
-				<Web3Provider>
-					<NotificationProvider>
-						<div className={clsx(inter.className)}>
-							<SEO />
-							<Navbar />
-							{children}
-						</div>
-					</NotificationProvider>
-				</Web3Provider>
-			</AntDesignConfigProvider>
+			<Web3Provider>
+				<SEO />
+				<AntDesignConfigProvider>
+					<div className={clsx(inter.className, 'flex flex-row')}>
+						<Sidebar />
+						{children}
+					</div>
+				</AntDesignConfigProvider>
+			</Web3Provider>
 		</ThemeProvider>
 	);
 };
