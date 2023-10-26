@@ -19,8 +19,9 @@ const Layout = ({ children }: Props) => {
 			<Web3Provider>
 				<SEO />
 				<AntDesignConfigProvider>
-					<div className={clsx(inter.className, 'flex flex-row')}>
+					<div className={clsx(inter.className, 'flex flex-row px-4')}>
 						<Sidebar />
+						<div className='w-[96px]' />
 						{children}
 					</div>
 				</AntDesignConfigProvider>
