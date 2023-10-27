@@ -57,7 +57,7 @@ const SidebarItem = ({ href, Icon, label, ...props }: SidebarItemProps) => {
 
 const Sidebar = () => {
 	return (
-		<div className='item-center fixed flex h-full max-h-screen w-[76px] py-2'>
+		<div className='item-center fixed hidden md:flex h-full max-h-screen w-[76px] py-2'>
 			<div className='flex flex-col items-center justify-between rounded-[1.25rem] bg-[#0F162A] px-3 py-6'>
 				<div className='flex flex-col items-center gap-2'>
 					<Link href='/'>
