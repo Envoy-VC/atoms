@@ -21,7 +21,7 @@ const Layout = ({ children }: Props) => {
 				<AntDesignConfigProvider>
 					<div className={clsx(inter.className, 'flex flex-row px-4')}>
 						<Sidebar />
-						<div className='w-[96px]' />
+						<div className='md:w-[96px]' />
 						{children}
 					</div>
 				</AntDesignConfigProvider>
