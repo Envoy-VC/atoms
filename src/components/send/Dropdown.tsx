@@ -3,7 +3,7 @@ import { Select } from 'antd';
 
 const Dropdown: React.FC = () => {
 	const [selectedItems, setSelectedItems] = useState<string[]>([]);
-	const OPTIONS = ['Arshit' ,'Dishank','Vedant'];
+	const OPTIONS = ['Arshit', 'Dishank', 'Vedant'];
 	const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
 
 	return (
@@ -13,7 +13,7 @@ const Dropdown: React.FC = () => {
 			value={selectedItems}
 			onChange={setSelectedItems}
 			style={{ width: '100%' }}
-			options={filteredOptions.map((item) => ({
+			options={filteredOptions.map((item: any) => ({
 				value: item,
 				label: item,
 			}))}
