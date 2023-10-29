@@ -2,12 +2,16 @@ import React from 'react';
 import {
 	ThirdwebProvider,
 	metamaskWallet,
-	walletConnect,
 	coinbaseWallet,
-	trustWallet,
+	walletConnect,
+	safeWallet,
 	localWallet,
+	embeddedWallet,
+	zerionWallet,
+	rainbowWallet,
+	phantomWallet,
 } from '@thirdweb-dev/react';
-import { Ethereum, Polygon } from '@thirdweb-dev/chains';
+import { Ethereum } from '@thirdweb-dev/chains';
 
 // Metadata
 import { dAppMetadata } from 'config';
@@ -25,18 +29,30 @@ const Web3Provider = ({ children }: Props) => {
 		<ThirdwebProvider
 			clientId={NEXT_PUBLIC_TW_CLIENT_ID}
 			activeChain={Ethereum}
-			supportedChains={[Ethereum, Polygon]}
 			dAppMeta={dAppMetadata}
 			supportedWallets={[
-				metamaskWallet(),
-				coinbaseWallet(),
+				metamaskWallet({ recommended: true }),
+				coinbaseWallet({ qrmodal: 'coinbase' }),
 				walletConnect({
 					projectId: NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
 				}),
-				trustWallet({
-					projectId: NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
+				safeWallet({
+					personalWallets: [
+						metamaskWallet({ recommended: true }),
+						coinbaseWallet(),
+						walletConnect(),
+						localWallet(),
+						embeddedWallet(),
+						zerionWallet(),
+						rainbowWallet(),
+						phantomWallet(),
+					],
 				}),
 				localWallet(),
+				embeddedWallet(),
+				zerionWallet(),
+				rainbowWallet(),
+				phantomWallet(),
 			]}
 		>
 			{children}
