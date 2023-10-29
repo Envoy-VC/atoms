@@ -31,7 +31,7 @@ const NavDrawer = ({ isOpen, setOpen }: Props) => {
 
 					<div className='flex flex-row items-center gap-1'>
 						<TbBleachNoChlorine size={36} className='text-primary mt-1' />
-						<div className='navTitle text-2xl font-medium'>atoms</div>
+						<div className='navTitle text-2xl font-medium !text-white'>atoms</div>
 					</div>
 				</div>
 			}
