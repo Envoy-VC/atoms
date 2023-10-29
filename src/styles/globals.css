@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navTitle {
+	display: none;
+}
+
+@media (min-width: 400px) {
+	.navTitle {
+		display: flex;
+	}
+}

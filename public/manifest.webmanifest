@@ -1,0 +1,24 @@
+{
+	"id": "/",
+	"name": "Atoms - Portfolio tracker with superpowers",
+	"short_name": "Atoms",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#9d72ff",
+	"background_color": "#FFFFFF",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"orientation": "portrait"
+}

@@ -27,12 +27,17 @@ interface SidebarItemProps extends React.ComponentProps<'div'> {
 	label: React.ReactNode;
 }
 
-const SidebarItem = ({ href, Icon, label, ...props }: SidebarItemProps) => {
+export const SidebarItem = ({
+	href,
+	Icon,
+	label,
+	...props
+}: SidebarItemProps) => {
 	const pathName = usePathname();
 	return (
 		<Link href={href} className='group'>
 			<div
-				className='flex flex-col items-center justify-center gap-[3px]'
+				className='flex flex-row items-center justify-center gap-3 sm:flex-col sm:gap-[3px]'
 				{...props}
 			>
 				<div
@@ -44,12 +49,10 @@ const SidebarItem = ({ href, Icon, label, ...props }: SidebarItemProps) => {
 					)}
 				>
 					<Icon
-						size={22}
-						className={clsx(pathName !== href ? 'text-gray-400' : 'text-[#020617d5]')}
+						className={clsx(pathName !== href ? 'text-gray-400' : 'text-[#020617d5]', 'text-2xl sm:text-[22px]')}
 					/>
 				</div>
-
-				<span className='text-[10px] text-white'>{label}</span>
+				<span className='text-[1rem] text-white sm:text-[10px]'>{label}</span>
 			</div>
 		</Link>
 	);
@@ -57,7 +60,7 @@ const SidebarItem = ({ href, Icon, label, ...props }: SidebarItemProps) => {
 
 const Sidebar = () => {
 	return (
-		<div className='item-center fixed hidden md:flex h-full max-h-screen w-[76px] py-2'>
+		<div className='item-center fixed hidden h-full max-h-screen w-[76px] py-2 sm:flex'>
 			<div className='flex flex-col items-center justify-between rounded-[1.25rem] bg-[#0F162A] px-3 py-6'>
 				<div className='flex flex-col items-center gap-2'>
 					<Link href='/'>
@@ -73,7 +76,7 @@ const Sidebar = () => {
 	);
 };
 
-const SidebarItems: SidebarItemProps[] = [
+export const SidebarItems: SidebarItemProps[] = [
 	{
 		href: '/',
 		Icon: TbLayout,
