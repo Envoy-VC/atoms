@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "color-pallette.js"  ],
+, "color-pallette.js", "next.config.mjs"  ],
   "exclude": ["node_modules"]
 }
