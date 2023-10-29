@@ -8,6 +8,7 @@ import { SEO, Sidebar, Navbar } from '~/components/common';
 // Font
 import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
+import Head from 'next/head';
 
 interface Props {
 	children: React.ReactNode;
@@ -17,6 +18,12 @@ const Layout = ({ children }: Props) => {
 	return (
 		<ThemeProvider attribute='class' enableSystem={false}>
 			<Web3Provider>
+				<Head>
+					<meta
+						name='viewport'
+						content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
+					/>
+				</Head>
 				<SEO />
 				<AntDesignConfigProvider>
 					<div

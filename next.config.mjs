@@ -4,9 +4,10 @@
  */
 import WithPwa from 'next-pwa';
 await import('./src/env.mjs');
-
+import { env } from './src/env.mjs';
 const withPWA = WithPwa({
 	dest: 'public',
+	disable: env.NEXT_PUBLIC_ENV === 'development',
 });
 
 /** @type {import("next").NextConfig} */
