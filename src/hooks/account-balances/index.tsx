@@ -15,9 +15,9 @@ const useGetAccountBalances = () => {
 		try {
 			setIsLoading(true);
 			const url = `https://api.chainbase.online/v1/account/tokens?chain_id=${network_id}&address=${address}&limit=5&page=1`;
-			console.log(url)
+			console.log(url);
 			const res = await fetch(url, {
-				method: 'POST',
+				method: 'GET',
 				headers: {
 					'x-api-key': env.NEXT_PUBLIC_CHAINBASE_API_KEY,
 					accept: 'application/json',
