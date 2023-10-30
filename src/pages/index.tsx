@@ -4,13 +4,14 @@ import type { NextPageWithLayout } from './_app';
 
 import { useGetAccountBalances } from '~/hooks';
 
-import { TokenHoldings } from '~/components/dashboard';
+import { TokenHoldings, PortfolioValue } from '~/components/dashboard';
 
 const Home: NextPageWithLayout = () => {
 	const { data, refetch } = useGetAccountBalances();
 
 	return (
 		<div className='p-1 sm:p-4'>
+			<PortfolioValue data={data} />
 			<TokenHoldings data={data} />
 		</div>
 	);
