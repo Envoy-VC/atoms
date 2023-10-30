@@ -13,7 +13,7 @@ const Dropdown: React.FC = () => {
 			value={selectedItems}
 			onChange={setSelectedItems}
 			style={{ width: '100%' }}
-			options={filteredOptions.map((item: any) => ({
+			options={filteredOptions.map((item) => ({
 				value: item,
 				label: item,
 			}))}
