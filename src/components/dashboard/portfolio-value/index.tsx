@@ -23,7 +23,7 @@ const PortfolioValue = ({ data }: Props) => {
 			<div className='text-sm font-semibold text-gray-400'>Portfolio Value</div>
 			<div className='flex flex-row items-center gap-4'>
 				<div className='text-5xl font-semibold'>
-					{showBalances ? `$${totalValue}` : '*******'}
+					{showBalances ? `$${totalValue ?? 0}` : '*******'}
 				</div>
 				<Button
 					type='text'

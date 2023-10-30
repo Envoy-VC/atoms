@@ -1,6 +1,7 @@
 import React from 'react';
 import { Avatar, Table } from 'antd';
 import { useLocalStorage } from 'usehooks-ts';
+import HoldingsFilters from '../holding-filters';
 
 // Types
 import type { ColumnsType } from 'antd/es/table';
@@ -43,7 +44,15 @@ const columns: ColumnsType<DataType> = [
 const TokenHoldings = ({ data }: Props) => {
 	const [showBalances, setShowBalances] = useLocalStorage('showBalances', true);
 
-	const tableData = data?.map((token, index) => {
+	const [filteredData, setFilteredData] = React.useState<
+		ERC20TokenBalance[] | null
+	>(data);
+
+	React.useEffect(() => {
+		setFilteredData(data);
+	}, [data]);
+
+	const tableData = filteredData?.map((token, index) => {
 		return {
 			key: index,
 			label: (
@@ -86,11 +95,18 @@ const TokenHoldings = ({ data }: Props) => {
 		} as DataType;
 	});
 	return (
-		<Table
-			columns={columns}
-			dataSource={data ? tableData : []}
-			tableLayout='auto'
-		/>
+		<div className='flex flex-col gap-2'>
+			<HoldingsFilters
+				data={data}
+				filteredData={filteredData}
+				setFilteredData={setFilteredData}
+			/>
+			<Table
+				columns={columns}
+				dataSource={data ? tableData : []}
+				tableLayout='auto'
+			/>
+		</div>
 	);
 };
 
