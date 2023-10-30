@@ -1,11 +1,11 @@
 import React from 'react';
-import { useAddress, useChainId } from '@thirdweb-dev/react';
+import { useAddress, useChainId, useChain } from '@thirdweb-dev/react';
 
 import type { ChainbaseResult, ERC20TokenBalance } from '~/types';
 
 const useGetAccountBalances = () => {
 	const address = useAddress();
-	const network_id = useChainId();
+	const chain = useChain();
 
 	const [data, setData] = React.useState<ERC20TokenBalance[] | null>(null);
 	const [error, setError] = React.useState<Error | null>(null);
@@ -15,9 +15,9 @@ const useGetAccountBalances = () => {
 		try {
 			setIsLoading(true);
 			const params = new URLSearchParams();
-			params.set('chain_id', String(network_id) ?? '1');
+			params.set('chain_id', String(chain?.chainId) ?? '1');
 			params.set('address', address ?? '');
-			params.set('limit', '4');
+			params.set('limit', '20');
 			params.set('page', '1');
 			const res = await fetch(
 				`/api/chainbase/account/tokens?${params.toString()}`,
@@ -40,8 +40,8 @@ const useGetAccountBalances = () => {
 	};
 
 	React.useEffect(() => {
-		if (address && network_id) void refetch();
-	}, [address, network_id]);
+		if (address && chain?.chainId) void refetch();
+	}, [address, chain?.chainId]);
 
 	return { data, isLoading, error, refetch };
 };

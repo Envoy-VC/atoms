@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import { Layout } from '~/components';
 import type { NextPageWithLayout } from './_app';
 
-import { Button } from 'antd';
 import { useGetAccountBalances } from '~/hooks';
 
 import { TokenHoldings } from '~/components/dashboard';
@@ -11,7 +10,7 @@ const Home: NextPageWithLayout = () => {
 	const { data, refetch } = useGetAccountBalances();
 
 	return (
-		<div className=''>
+		<div className='p-1 sm:p-4'>
 			<TokenHoldings data={data} />
 		</div>
 	);
