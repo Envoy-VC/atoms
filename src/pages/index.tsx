@@ -5,21 +5,14 @@ import type { NextPageWithLayout } from './_app';
 import { Button } from 'antd';
 import { useGetAccountBalances } from '~/hooks';
 
+import { TokenHoldings } from '~/components/dashboard';
+
 const Home: NextPageWithLayout = () => {
-	const { refetch } = useGetAccountBalances();
-	const onClick = async () => {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		const res = await refetch();
-		console.log(res);
-	};
+	const { data, refetch } = useGetAccountBalances();
+
 	return (
 		<div className=''>
-			<Button
-				// eslint-disable-next-line @typescript-eslint/no-misused-promises
-				onClick={onClick}
-			>
-				Fetch
-			</Button>
+			<TokenHoldings data={data} />
 		</div>
 	);
 };

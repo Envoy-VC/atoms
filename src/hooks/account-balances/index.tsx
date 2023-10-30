@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAddress, useChainId } from '@thirdweb-dev/react';
 
-import { ChainbaseResult, ERC20TokenBalance } from '~/types';
+import type { ChainbaseResult, ERC20TokenBalance } from '~/types';
 
 const useGetAccountBalances = () => {
 	const address = useAddress();
@@ -39,7 +39,11 @@ const useGetAccountBalances = () => {
 		}
 	};
 
-	return { refetch };
+	React.useEffect(() => {
+		if (address && network_id) void refetch();
+	}, [address, network_id]);
+
+	return { data, isLoading, error, refetch };
 };
 
 export default useGetAccountBalances;
